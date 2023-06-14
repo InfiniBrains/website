@@ -34,15 +34,15 @@ services:
       - "5432:5432"
     volumes:
       - postgres:/data/postgres
-  infinibrains-adminer:
-    image: adminer
-    restart: always
-    links:
-      - postgres-strapi-infinibrains
-    depends_on:
-      - postgres-strapi-infinibrains
-    ports:
-      - "8080:8080"
+#  infinibrains-adminer:
+#    image: adminer
+#    restart: always
+#    links:
+#      - postgres-strapi-infinibrains
+#    depends_on:
+#      - postgres-strapi-infinibrains
+#    ports:
+#      - "8080:8080"
 
 volumes:
   postgres:
