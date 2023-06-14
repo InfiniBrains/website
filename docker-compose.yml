@@ -4,7 +4,7 @@ services:
     container_name: strapi-infinibrains
     restart: always
 #    image: node:lts
-    build: .
+    build: backend
 #    volumes:
 #      - .:/srv/app
     ports:
