@@ -3,3 +3,5 @@
 node_modules/
 backend/src/extensions/documentation/documentation/*/full_documentation.json
 package-lock.json
+
+backend/src/extensions/documentation/public/index.html

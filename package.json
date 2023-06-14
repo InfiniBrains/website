@@ -5,13 +5,16 @@
     "clear": "npm run clear --prefix frontend/",
     "setup:frontend": "npm install --prefix frontend/",
     "setup:backend": "npm install --prefix backend/",
-    "setup": "npm run setup:frontend && npm run setup:backend",
+    "setup": "npm run setup:backend && npm run setup:frontend",
     "dev": "npm run clear && start-server-and-test back 1337 front",
     "build": "WiP",
     "start": "WiP"
   },
   "dependencies": {
     "concurrently": "^7.6.0",
+    "npm": "^9.7.1",
+    "run": "^1.4.0",
+    "setup": "^0.0.3",
     "start-server-and-test": "^2.0.0"
   }
 }

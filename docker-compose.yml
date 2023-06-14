@@ -1,21 +1,24 @@
 version: "3"
 services:
-  back:
+  app:
     container_name: infinibrains
     image: node:lts
-    restart: always
+#    restart: always
     volumes:
       - .:/app
     working_dir: /app
     ports:
       - "3000:3000"
       - "1337:1337"
-    links:
-      - postgres
-    command: |
-      npm install
-      npm run setup
-      npm run dev
+#    links:
+#      - postgres
+    command:
+      - /bin/bash
+      - -c
+      - | 
+        npm install
+        npm run setup
+        npm run dev
   postgres:
     image: postgres
     container_name: postgres
