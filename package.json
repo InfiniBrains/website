@@ -1,14 +1,17 @@
 {
   "scripts": {
     "front": "npm run dev --prefix frontend/",
-    "back":  "npm run dev --prefix backend/",
+    "back": "npm run dev --prefix backend/",
     "clear": "npm run clear --prefix frontend/",
     "setup:frontend": "npm install --prefix frontend/",
     "setup:backend": "npm install --prefix backend/",
     "setup": "npm run setup:frontend && npm run setup:backend",
-    "dev": "npm run clear && concurrently \"npm run back\" \"npm run front\""
+    "dev": "npm run clear && start-server-and-test back 1337 front",
+    "build": "WiP",
+    "start": "WiP"
   },
   "dependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "start-server-and-test": "^2.0.0"
   }
 }
