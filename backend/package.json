@@ -6,7 +6,6 @@
   "scripts": {
     "predev": "npm run generate:types",
     "dev": "strapi develop",
-    "prestart": "npm run seed",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
