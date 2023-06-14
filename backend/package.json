@@ -23,6 +23,7 @@
     "@strapi/plugin-users-permissions": "^4.11.1",
     "@strapi/strapi": "^4.11.1",
     "better-sqlite3": "^8.4.0",
+    "pg": "^8.11.0",
     "strapi-plugin-entity-relationship-chart": "^4.1.0",
     "strapi-plugin-local-image-sharp": "^1.6.0",
     "strapi-plugin-migrations": "^1.0.4",
