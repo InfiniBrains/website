@@ -16,12 +16,7 @@ const FALLBACK_SEO = {
 
 
 async function getGlobal(): Promise<any> {
-  // const token = environment.NEXT_PUBLIC_STRAPI_API_TOKEN;
-
-  // if (!token) throw new Error("The Strapi API Token environment variable is not set. See: https://github.com/strapi/nextjs-corporate-starter/tree/main#setting-up-the-frontend");
-
   const path = `/global`;
-  // const options = { headers: { Authorization: `Bearer ${token}` } };
 
   const urlParamsObject = {
     populate: [

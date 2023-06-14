@@ -74,7 +74,6 @@ https://github.com/strapi/nextjs-corporate-starter/assets/6153188/80f00bf5-d17b-
 Next we need to switch to our `/frontend` directory and create our `.env` file and paste in the following. 
 
 ```bash
-NEXT_PUBLIC_STRAPI_API_TOKEN=your-api-token
 NEXT_PUBLIC_PAGE_LIMIT=6
 NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN=your-form-submission-token
 NEXT_PUBLIC_STRAPI_API_URL=http://localhost:1337
@@ -106,8 +105,6 @@ In Permissions lets give the following access.
 | Product-feature | find and findOne |
 
 ![permissions](https://user-images.githubusercontent.com/6153188/231865625-a3634d89-0f40-4a6d-a356-8f654abd88b9.gif)
-
-Once you have your token add it to your `NEXT_PUBLIC_STRAPI_API_TOKEN` variable name in the `.env` file.
 
 **Alternatively:** you can create a READ only Token that will give READ permission to all your endpoints.
 

@@ -87,7 +87,6 @@ export default async function LayoutRoute({
 }
 
 export async function generateStaticParams() {
-  const token = environment.NEXT_PUBLIC_STRAPI_API_TOKEN;
   const path = `/articles`;
 
   const articleResponse = await APIGet({

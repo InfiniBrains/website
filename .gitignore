@@ -1,4 +1,5 @@
-
 .DS_Store
-
 .idea/
+node_modules/
+backend/src/extensions/documentation/documentation/*/full_documentation.json
+package-lock.json

@@ -1,10 +1,8 @@
 import LangRedirect from './components/LangRedirect';
 import { sectionRenderer } from './utils/section-renderer';
-import environment from "@/environment";
 import {APIGet} from "@/app/[lang]/utils/fetch-api";
 
 async function getPageBySlug(slug: string, lang: string) {
-    const token = environment.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = `/pages`;
     const urlParamsObject = { filters: { slug }, locale: lang };
     // const options = { headers: { Authorization: `Bearer ${token}` } };
