@@ -10,7 +10,7 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "seed": "strapi import -f seed-data.tar.gz --force",
+    "seed": "wget https://github.com/strapi/nextjs-corporate-starter/raw/main/seed-data.tar.gz -O /tmp/seed.tar.gz && strapi import -f /tmp/seed.tar.gz --force",
     "generate:types": "strapi ts:generate-types"
   },
   "dependencies": {
