@@ -1,0 +1,49 @@
+version: "3"
+services:
+  strapi-infinibrains:
+    container_name: strapi-infinibrains
+    restart: always
+#    image: node:lts
+    build: .
+#    volumes:
+#      - .:/srv/app
+    ports:
+      - "1337:1337"
+    links:
+      - postgres-strapi-infinibrains
+    depends_on:
+      - postgres-strapi-infinibrains
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=postgres-strapi-infinibrains
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=strapi
+      - DATABASE_PASSWORD=strapi
+  postgres-strapi-infinibrains:
+    image: postgres
+    container_name: postgres-strapi-infinibrains
+    restart: always
+    environment:
+      TZ: 'GMT'
+      PGTZ: 'GMT'
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+      POSTGRES_DB: strapi
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/data/postgres
+  infinibrains-adminer:
+    image: adminer
+    restart: always
+    links:
+      - postgres-strapi-infinibrains
+    depends_on:
+      - postgres-strapi-infinibrains
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres:
+    driver: local

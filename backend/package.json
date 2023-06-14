@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "postinstall": "npm run seed",
     "predev": "npm run generate:types",
     "dev": "strapi develop",
     "prestart": "npm run seed",
