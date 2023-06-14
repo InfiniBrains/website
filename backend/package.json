@@ -4,12 +4,16 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "predev": "strapi import -f seed-data.tar.gz --force",
+    "dev": "strapi develop",
+    "prestart": "npm run seed",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "seed": "strapi import -f seed-data.tar.gz --force"
   },
   "dependencies": {
+    "@strapi/plugin-documentation": "^4.11.1",
     "@strapi/plugin-i18n": "4.10.4",
     "@strapi/plugin-seo": "^1.8.0",
     "@strapi/plugin-users-permissions": "4.10.4",
