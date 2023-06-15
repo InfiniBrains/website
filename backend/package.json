@@ -5,7 +5,6 @@
   "description": "A Strapi application",
   "scripts": {
     "predev": "npm run generate:types",
-    "prestart": "npm run seed",
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
