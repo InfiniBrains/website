@@ -20,6 +20,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'strapi.infinibrains.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'images.pexels.com',
       }
     ],
