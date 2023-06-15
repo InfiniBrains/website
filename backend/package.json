@@ -14,20 +14,11 @@
     "generate:types": "strapi ts:generate-types"
   },
   "dependencies": {
-    "@notum-cz/strapi-plugin-content-versioning": "^0.4.7",
-    "@strapi/plugin-documentation": "^4.10.4",
-    "@strapi/plugin-graphql": "^4.10.4",
     "@strapi/plugin-i18n": "4.10.4",
     "@strapi/plugin-seo": "^1.8.0",
     "@strapi/plugin-users-permissions": "4.10.4",
     "@strapi/strapi": "4.10.4",
-    "better-sqlite3": "^8.4.0",
-    "pg": "^8.11.0",
-    "strapi-plugin-entity-relationship-chart": "^4.1.0",
-    "strapi-plugin-local-image-sharp": "^1.6.0",
-    "strapi-plugin-migrations": "^1.0.4",
-    "strapi-plugin-passwordless": "^4.0.12",
-    "strapi-plugin-random-sort": "^0.0.3"
+    "pg": "^8.11.0"
   },
   "author": {
     "name": "A Strapi developer"
