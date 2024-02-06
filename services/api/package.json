@@ -25,6 +25,7 @@
     "schema:drop": "npm run typeorm -- schema:drop"
   },
   "dependencies": {
+    "@game-guild/common": "*",
     "@dataui/crud": "^5.2.4",
     "@dataui/crud-request": "^5.2.4",
     "@dataui/crud-typeorm": "^5.2.4",

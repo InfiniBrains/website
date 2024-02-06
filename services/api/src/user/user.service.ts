@@ -2,7 +2,7 @@ import { TypeOrmCrudService } from '@dataui/crud-typeorm';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
-import { CreateLocalUserDto } from './dtos';
+import { CreateLocalUserDto } from '@game-guild/common/dist/user';
 import { UserEntity } from './entities';
 import { UserAlreadyExistsException } from './exceptions/user-already-exists.exception';
 import { UserProfileEntity } from './modules/user-profile/entities/user-profile.entity';

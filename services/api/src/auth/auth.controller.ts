@@ -1,29 +1,21 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Logger,
-  Post,
-  Query,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { AuthService } from './auth.service';
-import { Public } from './decorators';
-import { LocalSignInDto, LocalSignUpDto } from './dtos';
-import { LocalGuard } from './guards';
-import { JwtRefreshTokenGuard } from './guards/jwt-refresh-token-guard.service';
-import { RequestWithUser } from './types';
+import { LocalSignInDto } from "@game-guild/common/dist/auth/local-sign-in.dto";
+import { LocalSignUpDto } from "@game-guild/common/dist/auth/local-sign-up.dto";
+import { Body, Controller, Get, Logger, Post, Query, Request, UseGuards } from "@nestjs/common";
+import { ApiBody, ApiTags } from "@nestjs/swagger";
+import { AuthService } from "./auth.service";
+import { Public } from "./decorators";
+import { LocalGuard } from "./guards";
+import { JwtRefreshTokenGuard } from "./guards/jwt-refresh-token-guard.service";
+import { RequestWithUser } from "./types";
 
-@Controller('auth')
-@ApiTags('auth')
+@Controller("auth")
+@ApiTags("auth")
 export class AuthController {
   private readonly logger = new Logger(AuthController.name);
 
   constructor(private readonly authService: AuthService) {}
 
-  @Post('sign-in')
+  @Post("sign-in")
   @Public()
   @UseGuards(LocalGuard)
   @ApiBody({ type: LocalSignInDto })
@@ -46,21 +38,21 @@ export class AuthController {
   //   return await this.authService.signIn(request.user);
   // }
 
-  @Post('sign-up')
+  @Post("sign-up")
   @Public()
   public async signUpWithEmailAndPassword(@Body() data: LocalSignUpDto) {
     return this.authService.signUpWithEmailAndPassword(data);
   }
 
-  @Post('/refresh-token')
+  @Post("/refresh-token")
   @Public()
   @UseGuards(JwtRefreshTokenGuard)
   public async refreshToken(@Request() request: RequestWithUser) {
     return await this.authService.refreshAccessToken(request.user);
   }
 
-  @Get('verify-email')
-  public async verifyEmail(@Query('token') token: string): Promise<any> {
+  @Get("verify-email")
+  public async verifyEmail(@Query("token") token: string): Promise<any> {
     return await this.authService.validateEmailVerificationToken(token);
   }
 }

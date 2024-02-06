@@ -1,43 +1,43 @@
-import { Injectable, UnprocessableEntityException } from '@nestjs/common';
-import { AuthService } from '../auth/auth.service';
-import { TerminalDto } from './dtos/terminal.dto';
-import * as util from 'util';
-import { InjectRepository } from '@nestjs/typeorm';
-import { In, IsNull, Not, Repository } from 'typeorm';
-import {
-  CompetitionGame,
-  CompetitionSubmissionEntity,
-} from './entities/competition.submission.entity';
-import {
-  CompetitionRunEntity,
-  CompetitionRunState,
-} from './entities/competition.run.entity';
-import {
-  CompetitionMatchEntity,
-  CompetitionWinner,
-} from './entities/competition.match.entity';
-import { promises as fsp } from 'fs';
-import * as fse from 'fs-extra';
-import { UserService } from '../user/user.service';
-import { LinqRepository } from 'typeorm-linq-repository';
-import { CompetitionRunSubmissionReportEntity } from './entities/competition.run.submission.report.entity';
-import { UserEntity } from '../user/entities';
-import { CleanOptions, simpleGit } from 'simple-git';
-import * as process from 'process';
-import extract from 'extract-zip';
-import * as decompress from 'decompress';
-import { ChessMoveRequestDto } from './dtos/chess-move-request.dto';
-import ExecuteCommand from '../common/execute-command';
-import { ChessMatchRequestDto } from './dtos/chess-match-request.dto';
-
-import { Chess, Move } from 'chess.js';
+import { ChessMatchRequestDto } from '@game-guild/common/dist/competition/chess-match-request.dto';
 import {
   ChessGameResult,
   ChessGameResultReason,
   ChessMatchResultDto,
-} from './dtos/chess-match-result.dto';
-import { UserProfileService } from '../user/modules/user-profile/user-profile.service';
+} from '@game-guild/common/dist/competition/chess-match-result.dto';
+import { ChessMoveRequestDto } from '@game-guild/common/dist/competition/chess-move-request.dto';
+import { TerminalDto } from '@game-guild/common/dist/competition/terminal.dto';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+
+import { Chess, Move } from 'chess.js';
+import * as decompress from 'decompress';
+import extract from 'extract-zip';
+import { promises as fsp } from 'fs';
+import * as fse from 'fs-extra';
+import * as process from 'process';
+import { CleanOptions, simpleGit } from 'simple-git';
+import { IsNull, Not, Repository } from 'typeorm';
+import { LinqRepository } from 'typeorm-linq-repository';
 import { FindManyOptions } from 'typeorm/find-options/FindManyOptions';
+import * as util from 'util';
+import { AuthService } from '../auth';
+import ExecuteCommand from '../common/execute-command';
+import { UserEntity } from '../user/entities';
+import { UserProfileService } from '../user/modules/user-profile/user-profile.service';
+import { UserService } from '../user/user.service';
+import {
+  CompetitionMatchEntity,
+  CompetitionWinner,
+} from './entities/competition.match.entity';
+import {
+  CompetitionRunEntity,
+  CompetitionRunState,
+} from './entities/competition.run.entity';
+import { CompetitionRunSubmissionReportEntity } from './entities/competition.run.submission.report.entity';
+import {
+  CompetitionGame,
+  CompetitionSubmissionEntity,
+} from './entities/competition.submission.entity';
 
 const execShPromise = require('exec-sh').promise;
 
@@ -223,6 +223,7 @@ export class CompetitionService {
       return data;
     }
   }
+
   async appendLog(data: TerminalDto): Promise<void> {
     await fsp.appendFile('log.txt', JSON.stringify(data) + '\n', 'utf8');
   }

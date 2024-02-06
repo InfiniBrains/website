@@ -12,26 +12,20 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import {
-  ApiConsumes,
-  ApiOkResponse,
-  ApiProduces,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiConsumes, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CompetitionService } from './competition.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { TerminalDto } from './dtos/terminal.dto';
+import { TerminalDto } from '@game-guild/common/dist/competition/terminal.dto';
 
-import { CompetitionSubmissionDto } from './dtos/competition.submission.dto';
+import { CompetitionSubmissionDto } from '@game-guild/common/dist/competition/competition.submission.dto';
 import { CompetitionGame } from './entities/competition.submission.entity';
 import { Public } from '../auth';
-import { ChessMoveRequestDto } from './dtos/chess-move-request.dto';
-import { ChessMatchRequestDto } from './dtos/chess-match-request.dto';
-import { ChessMatchResultDto } from './dtos/chess-match-result.dto';
+import { ChessMoveRequestDto } from '@game-guild/common/dist/competition/chess-move-request.dto';
+import { ChessMatchRequestDto } from '@game-guild/common/dist/competition/chess-match-request.dto';
+import { ChessMatchResultDto } from '@game-guild/common/dist/competition/chess-match-result.dto';
 import { CompetitionMatchEntity } from './entities/competition.match.entity';
-import { MatchSearchRequestDto } from './dtos/match-search-request.dto';
-import { MatchSearchResponseDto } from './dtos/match-search-response.dto';
+import { MatchSearchRequestDto } from '@game-guild/common/dist/competition/match-search-request.dto';
+import { MatchSearchResponseDto } from '@game-guild/common/dist/competition/match-search-response.dto';
 
 @Controller('Competitions')
 @ApiTags('competitions')
@@ -194,7 +188,7 @@ export class CompetitionController {
       (match: CompetitionMatchEntity) => {
         const convertedMatch: MatchSearchResponseDto =
           new MatchSearchResponseDto();
-        convertedMatch.id = match.id;
+        // convertedMatch.id = match.id;
         convertedMatch.winner = match.winner;
         convertedMatch.lastState = match.lastState;
         convertedMatch.players = [

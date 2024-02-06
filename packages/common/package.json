@@ -5,6 +5,14 @@
   "license": "ISC",
   "author": "",
   "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@nestjs/swagger": "^6.3.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0"
+  },
   "devDependencies": {
     "@game-guild/eslint-config": "*",
     "@game-guild/prettier-config": "*",

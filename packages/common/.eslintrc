@@ -1,6 +1,6 @@
 {
   "extends": [
-    "@game-guild/eslint-config/react"
+    "@game-guild/eslint-config"
   ],
   "root": true
 }

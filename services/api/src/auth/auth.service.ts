@@ -1,3 +1,5 @@
+import { LocalSignInDto } from '@game-guild/common/dist/auth/local-sign-in.dto';
+import { LocalSignUpDto } from '@game-guild/common/dist/auth/local-sign-up.dto';
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ApiConfigService } from '../common/config.service';
@@ -9,7 +11,6 @@ import {
 import { NotificationService } from '../notification/notification.service';
 import { UserEntity } from '../user/entities';
 import { UserService } from '../user/user.service';
-import { LocalSignInDto, LocalSignUpDto } from './dtos';
 
 @Injectable()
 export class AuthService {
