@@ -1,3 +1,4 @@
+export * from './chess-leaderboard-response.dto';
 export * from './chess-match-request.dto';
 export * from './chess-match-result.dto';
 export * from './chess-move-request.dto';

@@ -1,3 +1,4 @@
+import { ChessLeaderboardResponseEntryDto } from "@game-guild/common/dist/competition/chess-leaderboard-response.dto";
 import {
   Body,
   Controller,
@@ -208,5 +209,15 @@ export class CompetitionController {
     @Param('id', ParseUUIDPipe) id: string,
   ): Promise<ChessMatchResultDto> {
     return JSON.parse((await this.service.findMatchById(id)).logs);
+  }
+
+  @Get('/Chess/Leaderboard')
+  @Public()
+  @ApiOkResponse({
+    type: ChessLeaderboardResponseEntryDto,
+    isArray: true,
+  })
+  async GetChessLeaderboard(): Promise<ChessLeaderboardResponseEntryDto[]> {
+    return this.service.getLeaderboard();
   }
 }

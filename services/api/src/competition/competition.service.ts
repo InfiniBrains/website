@@ -1,3 +1,4 @@
+import { ChessLeaderboardResponseDto } from '@game-guild/common/dist/competition';
 import { ChessMatchRequestDto } from '@game-guild/common/dist/competition/chess-match-request.dto';
 import {
   ChessGameResult,
@@ -34,10 +35,7 @@ import {
   CompetitionRunState,
 } from './entities/competition.run.entity';
 import { CompetitionRunSubmissionReportEntity } from './entities/competition.run.submission.report.entity';
-import {
-  CompetitionGame,
-  CompetitionSubmissionEntity,
-} from './entities/competition.submission.entity';
+import { CompetitionGame, CompetitionSubmissionEntity } from "./entities/competition.submission.entity";
 
 const execShPromise = require('exec-sh').promise;
 
@@ -971,5 +969,20 @@ export class CompetitionService {
 
   async findMatchById(id: string): Promise<CompetitionMatchEntity> {
     return await this.matchRepository.findOne({ where: { id } });
+  }
+
+  async getLeaderboard(): Promise<ChessLeaderboardResponseDto> {
+    const users = await this.userService.find({
+      select: {
+        username: true,
+        elo: true,
+      },
+      order: {
+        elo: 'DESC',
+      },
+      take: 3,
+    });
+
+    return users;
   }
 }
