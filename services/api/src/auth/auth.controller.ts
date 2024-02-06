@@ -11,10 +11,10 @@ import {
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { Public } from './decorators';
-import { LocalSignInDto, LocalSignUpDto } from './dtos';
 import { LocalGuard } from './guards';
 import { JwtRefreshTokenGuard } from './guards/jwt-refresh-token-guard.service';
 import { RequestWithUser } from './types';
+import { LocalSignInDto, LocalSignUpDto } from "@game-guild/common/src/auth";
 
 @Controller('auth')
 @ApiTags('auth')

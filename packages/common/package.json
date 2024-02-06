@@ -7,7 +7,10 @@
   "private": true,
   "devDependencies": {
     "@game-guild/eslint-config": "*",
-    "@game-guild/prettier-config": "*",
-    "@game-guild/jest-config": "*"
+    "@game-guild/jest-config": "*",
+    "@game-guild/prettier-config": "*"
+  },
+  "dependencies": {
+    "@nestjs/swagger": "^7.2.0"
   }
 }

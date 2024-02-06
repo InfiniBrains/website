@@ -1,4 +1,12 @@
 {
   "extends": "@game-guild/tsconfig/react.json",
-  "compilerOptions": {}
+  "baseUrl": ".",
+  "compilerOptions": {
+    "paths": {
+      "@game-guild/eslint-config": ["../eslint-config"],
+      "@game-guild/jest-config": ["../jest-config"],
+      "@game-guild/prettier-config": ["../prettier-config"],
+      "@game-guild/tsconfig": ["../tsconfig"],
+    }
+  }
 }

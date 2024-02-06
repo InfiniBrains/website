@@ -6,8 +6,14 @@
   "license": "ISC",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "services/*"
+    "packages/common",
+    "packages/eslint-config",
+    "packages/jest-config",
+    "packages/prettier-config",
+    "packages/tsconfig",
+    "packages/ui",
+    "services/api",
+    "services/web"
   ],
   "scripts": {
     "install:api": "npm install --workspace=services/api",

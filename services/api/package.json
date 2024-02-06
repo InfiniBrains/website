@@ -72,6 +72,7 @@
     "@game-guild/eslint-config": "*",
     "@game-guild/jest-config": "*",
     "@game-guild/prettier-config": "*",
+    "@game-guild/common": "*",
     "@nestjs/cli": "^9.5.0",
     "@nestjs/schematics": "^9.2.0",
     "@nestjs/testing": "^9.4.3",

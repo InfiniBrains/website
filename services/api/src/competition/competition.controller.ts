@@ -21,23 +21,30 @@ import {
 } from '@nestjs/swagger';
 import { CompetitionService } from './competition.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { TerminalDto } from './dtos/terminal.dto';
+import { TerminalDto } from '@game-guild/common/src/competition/terminal.dto';
 
-import { CompetitionSubmissionDto } from './dtos/competition.submission.dto';
+import { CompetitionSubmissionDto } from '@game-guild/common/src/competition/competition.submission.dto';
 import { CompetitionGame } from './entities/competition.submission.entity';
 import { Public } from '../auth';
-import { ChessMoveRequestDto } from './dtos/chess-move-request.dto';
-import { ChessMatchRequestDto } from './dtos/chess-match-request.dto';
-import { ChessMatchResultDto } from './dtos/chess-match-result.dto';
+import { ChessMoveRequestDto } from '@game-guild/common/src/competition/chess-move-request.dto';
+import { ChessMatchRequestDto } from '@game-guild/common/src/competition/chess-match-request.dto';
+import { ChessMatchResultDto } from '@game-guild/common/src/competition/chess-match-result.dto';
 import { CompetitionMatchEntity } from './entities/competition.match.entity';
-import { MatchSearchRequestDto } from './dtos/match-search-request.dto';
-import { MatchSearchResponseDto } from './dtos/match-search-response.dto';
-import { ChessLeaderboardResponseDto, ChessLeaderboardResponseEntryDto } from "./dtos/chess-leaderboard-response.dto";
+import { MatchSearchRequestDto } from '@game-guild/common/src/competition/match-search-request.dto';
+import { MatchSearchResponseDto } from '@game-guild/common/src/competition/match-search-response.dto';
+import { ChessLeaderboardResponseDto, ChessLeaderboardResponseEntryDto } from "@game-guild/common/src/competition/chess-leaderboard-response.dto";
+
+import { TestDto } from '@game-guild/common/src/test.dto';
 
 @Controller('Competitions')
 @ApiTags('competitions')
 export class CompetitionController {
   constructor(public service: CompetitionService) {}
+  
+  async test() {
+    let test: TestDto = {name: "test"};
+    console.log(test.name);
+  };
 
   // @Post('/CTC/submit')
   // @ApiConsumes('multipart/form-data')

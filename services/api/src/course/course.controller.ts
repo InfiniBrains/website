@@ -1,7 +1,7 @@
 import { Controller, Logger, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CourseService } from './course.service';
-import { CreateCourseDto } from './dtos/create-course.dto';
+import { CreateCourseDto } from "@game-guild/common/src/course/create-course.dto";
 
 @Controller('courses')
 @ApiTags('courses')

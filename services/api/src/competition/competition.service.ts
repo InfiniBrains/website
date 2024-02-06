@@ -1,6 +1,5 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { AuthService } from '../auth/auth.service';
-import { TerminalDto } from './dtos/terminal.dto';
 import * as util from 'util';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, IsNull, Not, Repository } from 'typeorm';
@@ -26,19 +25,20 @@ import { CleanOptions, simpleGit } from 'simple-git';
 import * as process from 'process';
 import extract from 'extract-zip';
 import * as decompress from 'decompress';
-import { ChessMoveRequestDto } from './dtos/chess-move-request.dto';
 import ExecuteCommand from '../common/execute-command';
-import { ChessMatchRequestDto } from './dtos/chess-match-request.dto';
 
 import { Chess, Move } from 'chess.js';
-import {
-  ChessGameResult,
-  ChessGameResultReason,
-  ChessMatchResultDto,
-} from './dtos/chess-match-result.dto';
+
 import { UserProfileService } from '../user/modules/user-profile/user-profile.service';
 import { FindManyOptions } from 'typeorm/find-options/FindManyOptions';
-import { ChessLeaderboardResponseDto } from "./dtos/chess-leaderboard-response.dto";
+import {
+  ChessMoveRequestDto,
+  TerminalDto,
+  ChessMatchResultDto,
+  ChessMatchRequestDto,
+  ChessGameResultReason,
+  ChessGameResult, ChessLeaderboardResponseDto
+} from "@game-guild/common/src/competition";
 
 const execShPromise = require('exec-sh').promise;
 

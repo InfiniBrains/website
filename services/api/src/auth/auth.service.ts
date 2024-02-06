@@ -9,7 +9,7 @@ import {
 import { NotificationService } from '../notification/notification.service';
 import { UserEntity } from '../user/entities';
 import { UserService } from '../user/user.service';
-import { LocalSignInDto, LocalSignUpDto } from './dtos';
+import { LocalSignInDto, LocalSignUpDto } from '@game-guild/common/src/auth'
 
 @Injectable()
 export class AuthService {
