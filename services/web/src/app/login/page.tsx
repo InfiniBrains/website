@@ -1,9 +1,10 @@
 'use client';
 import MetamaskSignIn from '@/components/web3/metamask';
 import { useRouter } from 'next/navigation';
-import {notification, NotificationArgsProps} from "antd";
+import { message, notification, NotificationArgsProps } from "antd";
 import React from "react";
 import {NotificationProvider} from "@/app/NotificationContext";
+import { LocalSignInDto } from "@/dtos/auth/local-sign-in.dto";
 
 
 function Home() {
@@ -20,6 +21,27 @@ function Home() {
       placement,
     });
   };
+  
+  const handleLogin = async (e?: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
+    console.log('emailOrUsername', emailOrUsername);
+    e?.preventDefault();
+    
+    let body: LocalSignInDto;
+    if (emailOrUsername.includes('@')) {
+      body = { email: emailOrUsername, password };
+    } else {
+      body = { username: emailOrUsername, password };
+    }
+    const baseAddress = process.env.NEXT_PUBLIC_API_ADDRESS;
+    const response = await fetch(`${baseAddress}/auth/sign-in`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body) ,
+    });
+    message.info('Login successful');
+  }
 
   const handleLoginGoogle = async () => {
     openNotification('You just found a WiP feature. Help us finish by coding it for us, or you can pay us a beer or more.');
@@ -54,13 +76,14 @@ function Home() {
           <h1 className="text-2xl font-semibold mb-4">Login</h1>
           <form className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium">
-                Email
+              <label htmlFor="emailOrUsername" className="block text-sm font-medium">
+                Email or Username
               </label>
               <input
                 type="text"
-                id="email"
+                id="emailOrUsername"
                 className="mt-1 p-2 w-full border rounded-md"
+                onChange={(e) => setEmailOrUsername(e.target.value)}
               />
             </div>
             <div>
@@ -71,11 +94,14 @@ function Home() {
                 type="password"
                 id="password"
                 className="mt-1 p-2 w-full border rounded-md"
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
               />
             </div>
             <button
-              type="submit"
+              type="button"
               className="w-full bg-blue-500 text-white p-2 rounded-md"
+              onClick={handleLogin}
             >
               Log in
             </button>

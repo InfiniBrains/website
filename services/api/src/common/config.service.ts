@@ -7,6 +7,7 @@ import * as path from 'path';
 // import { UserSubscriber } from '../../entity-subscribers/user-subscriber';
 import { SnakeNamingStrategy } from '../snake-naming.strategy';
 
+// todo: merge both config services
 @Injectable()
 export class ApiConfigService {
   constructor(@Inject(ConfigService) private service: ConfigService) {}

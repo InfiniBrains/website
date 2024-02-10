@@ -2,13 +2,13 @@ import {
   Body,
   Controller,
   Get,
-  Logger,
+  Logger, Param,
   Post,
   Query,
   Request,
-  UseGuards,
-} from '@nestjs/common';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
+  UseGuards
+} from "@nestjs/common";
+import { ApiBody, ApiOkResponse, ApiTags } from "@nestjs/swagger";
 import { AuthService } from './auth.service';
 import { Public } from './decorators';
 import { LocalGuard } from './guards';
@@ -24,6 +24,21 @@ export class AuthController {
 
   constructor(private readonly authService: AuthService) {}
 
+  @Get('emailOrUsernameExists/:data')
+  @ApiOkResponse({type: Boolean})
+  @Public()
+  public async emailOrUsernameExists(@Param("data") data: string): Promise<boolean> {
+    return !!(await this.authService.getUserByUsernameOrEmail(data));
+  }
+  
+  // todo: make localguard resilient to this usecase
+  @Post('localSignInUsernameOrEmail')
+  @Public()
+  public async localSignInUsernameOrEmail(@Body() body: LocalSignInDto){
+    return await this.authService.localSignInUsernameOrEmail(body);
+  }
+  
+  
   @Post('sign-in')
   @Public()
   @UseGuards(LocalGuard)
@@ -53,7 +68,7 @@ export class AuthController {
     return this.authService.signUpWithEmailAndPassword(data);
   }
 
-  @Post('/refresh-token')
+  @Post('refresh-token')
   @Public()
   @UseGuards(JwtRefreshTokenGuard)
   public async refreshToken(@Request() request: RequestWithUser) {

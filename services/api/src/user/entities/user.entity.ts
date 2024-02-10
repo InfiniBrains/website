@@ -11,6 +11,7 @@ import {
 import { EntityBase } from '../../common/entities/entity.base';
 import { UserProfileEntity } from '../modules/user-profile/entities/user-profile.entity';
 import { CompetitionSubmissionEntity } from '../../competition/entities/competition.submission.entity';
+import { RoleType } from "../../dtos/constants/role-type";
 
 // todo: move to user-profile lots of fields from here
 
@@ -93,4 +94,7 @@ export class UserEntity extends EntityBase {
   // chess elo rank
   @Column({ type: 'float', default: 400 })
   elo: number;
+  
+  @Column({ type: 'enum', enum: RoleType, default: RoleType.USER })
+  role: RoleType;
 }

@@ -23,7 +23,7 @@ export class AuthService {
     private readonly notificationService: NotificationService,
   ) {}
 
-  public async generateAccessToken(user: UserEntity): Promise<any> {
+  public async generateAccessToken(user: UserEntity): Promise<string> {
     const payload = {
       sub: user.id,
       email: user.email,
@@ -38,10 +38,11 @@ export class AuthService {
     });
   }
 
-  public async generateRefreshToken(user: UserEntity): Promise<any> {
+  public async generateRefreshToken(user: UserEntity): Promise<string> {
     const payload = {
       sub: user.id,
       email: user.email,
+      username: user.username,
       // TODO: Add more claims.
     };
 
@@ -53,10 +54,11 @@ export class AuthService {
     });
   }
 
-  public async generateEmailVerificationToken(user: UserEntity): Promise<any> {
+  public async generateEmailVerificationToken(user: UserEntity): Promise<string> {
     const payload = {
       sub: user.id,
       email: user.email,
+      username: user.username,
       // TODO: Add more claims.
     };
 
@@ -68,7 +70,7 @@ export class AuthService {
     });
   }
 
-  public async refreshAccessToken(user: UserEntity) {
+  public async refreshAccessToken(user: UserEntity): Promise<string> {
     return this.generateAccessToken(user);
   }
 
@@ -170,5 +172,23 @@ export class AuthService {
     } catch (exception) {
       throw new UnauthorizedException('Invalid or expired token');
     }
+  }
+
+  async getUserByUsernameOrEmail(emailOrUsername: string): Promise<UserEntity> {
+    return this.userService.findOne({
+      where: [
+        {
+          username: emailOrUsername
+        },
+        {
+          email: emailOrUsername
+        }
+      ]
+    })
+  }
+
+  async localSignInUsernameOrEmail(body: LocalSignInDto) {
+    const user = await this.validateLocalSignIn(body);
+    let accessToken = this.generateAccessToken
   }
 }
